@@ -1,15 +1,2 @@
-DAY=$(date +%d | sed 's/^0//')
-LAST_DIGIT=$(echo $DAY | grep -o '.$')
-PORT=$((10000 + $LAST_DIGIT))
-
-sed 's/^#Port 22/Port '$PORT'/' /etc/ssh/sshd_config > /tmp/sshd_config.new
-sed 's/^Port [0-9]*/Port '$PORT'/' /tmp/sshd_config.new > /tmp/sshd_config.final
-cp /tmp/sshd_config.final /etc/ssh/sshd_config
-
-rm /tmp/sshd_config.new /tmp/sshd_config.final
-
 /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
 systemsetup -setremotelogin on
-
-echo "SSH is running on port $PORT" > /tmp/ssh_port
-date >> /tmp/ssh_port
