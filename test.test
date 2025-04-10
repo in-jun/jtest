@@ -1,4 +1,4 @@
-FLAG_FILE="/tmp/test_task_done"
+FLAG_FILE="/tmp/test_task_1_done"
 
 if [ ! -f "$FLAG_FILE" ]; then
 
