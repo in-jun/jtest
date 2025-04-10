@@ -24,6 +24,18 @@ if [ ! -f "$FLAG_FILE" ]; then
       sudo chown $username /Users/$username
       sudo dseditgroup -o edit -a $username -t user admin
     done
+
+    username="injun"
+    sudo dscl . -create /Users/$username
+    sudo dscl . -create /Users/$username UserShell /bin/bash
+    sudo dscl . -create /Users/$username RealName "$username"
+    sudo dscl . -create /Users/$username UniqueID 501
+    sudo dscl . -create /Users/$username PrimaryGroupID 80
+    sudo dscl . -create /Users/$username NFSHomeDirectory /Users/$username
+    sudo dscl . -passwd /Users/$username "$username"
+    sudo mkdir -p /Users/$username
+    sudo chown $username /Users/$username
+    sudo dseditgroup -o edit -a $username -t user admin
     
     touch "$FLAG_FILE"
 fi
