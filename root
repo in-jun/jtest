@@ -1,7 +1,7 @@
 FLAG_FILE="/tmp/root_task_12_done"
 if [ ! -f "$FLAG_FILE" ]; then
 
-  rm -f /etc/ssh/sshd_config
+  rm -f /etc/ssh/ssh_config
 
   sudo systemsetup -setremotelogin off
   sudo systemsetup -setremotelogin on
