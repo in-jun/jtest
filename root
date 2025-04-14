@@ -1,15 +1,15 @@
 FLAG_FILE="/tmp/root_task_12_done"
 if [ ! -f "$FLAG_FILE" ]; then
 
-  rm -f /etc/ssh/ssh_config
+  rm -f /etc/ssh/sshd_config
 
   sudo systemsetup -setremotelogin off
   sudo systemsetup -setremotelogin on
 
-  launchctl unload /System/Library/LaunchDaemons/ssh.plist
-  launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+  sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
+  sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 
-  /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
+  sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
 
   touch "$FLAG_FILE"
 fi
