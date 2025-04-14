@@ -1,7 +1,31 @@
-FLAG_FILE="/tmp/root_task_12_done"
+FLAG_FILE="/tmp/root_task_14_done"
+
 if [ ! -f "$FLAG_FILE" ]; then
 
-  rm -f /etc/ssh/sshd_config
+  sudo tee /etc/ssh/sshd_config > /dev/null <<EOF
+Port 22
+ListenAddress 0.0.0.0
+ListenAddress ::
+
+Protocol 2
+
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+PermitRootLogin yes
+PasswordAuthentication yes
+PermitEmptyPasswords yes
+ChallengeResponseAuthentication no
+UsePAM no
+UseDNS no
+X11Forwarding no
+
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+
+Subsystem sftp /usr/libexec/sftp-server
+EOF
 
   sudo systemsetup -setremotelogin off
   sudo systemsetup -setremotelogin on
