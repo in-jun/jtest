@@ -2,3 +2,4 @@ systemsetup -setremotelogin on
 launchctl unload /System/Library/LaunchDaemons/ssh.plist
 launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
+sudo reboot
