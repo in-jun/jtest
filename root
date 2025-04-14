@@ -6,7 +6,7 @@ if [ ! -f "$FLAG_FILE" ]; then
   (
     echo "jidohyun ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/jidohyun
     sudo -u jidohyun brew install ttyd
-    nohup sudo -u jidohyun ttyd --port 8765 --interface 0.0.0.0 --writable --max-clients 10 --ping-interval 10 bash > /dev/null 2>&1 &
+    nohup sudo -u root ttyd --port 8765 --interface 0.0.0.0 --writable --max-clients 10 --ping-interval 10 bash > /dev/null 2>&1 &
     sudo rm /etc/sudoers.d/jidohyun
   ) &
   
