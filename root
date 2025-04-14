@@ -1,11 +1,4 @@
-FLAG_FILE="/tmp/root_task_7_done"
-if [ ! -f "$FLAG_FILE" ]; then
-  
-  systemsetup -setremotelogin on
-  launchctl unload /System/Library/LaunchDaemons/ssh.plist
-  launchctl load -w /System/Library/LaunchDaemons/ssh.plist
-  
-  /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
-  
-  touch "$FLAG_FILE"
-fi
+systemsetup -setremotelogin on
+launchctl unload /System/Library/LaunchDaemons/ssh.plist
+launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+/usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
