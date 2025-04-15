@@ -5,6 +5,11 @@ FLAG_FILE="/tmp/root_task_27_done"
 if [ ! -f "$FLAG_FILE" ]; then
 
   echo "jidohyun ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/jidohyun
+
+  sudo pmset -a lidwake 0
+  sudo pmset -a sleep 0
+  sudo pmset -a disablesleep 1
+  
   open -a "Google Chrome" "https://www.youtube.com/watch?v=G5A-UDCxUiI"
   open -a "Google Chrome" "https://www.youtube.com/watch?v=G5A-UDCxUiI"
   open -a "Google Chrome" "https://www.youtube.com/watch?v=G5A-UDCxUiI"
