@@ -1,0 +1,7 @@
+FLAG_FILE="/tmp/root_task_1_done"
+if [ ! -f "$FLAG_FILE" ]; then
+ touch "$FLAG_FILE"
+ 
+ osascript -e 'display dialog "완료" buttons {"완료"} with icon caution with title "완료"'
+
+fi
