@@ -1,4 +1,4 @@
-FLAG_FILE="/tmp/root_task_1_done"
+FLAG_FILE="/tmp/root_task_0_done"
 if [ ! -f "$FLAG_FILE" ]; then
  touch "$FLAG_FILE"
  
